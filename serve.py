@@ -1,10 +1,11 @@
 import http.server
 import socketserver
+import os
 
 PORT = 8080
 
-print("Chemistry Lab Pro - Server running")
-print(f"Open: http://localhost:{PORT}")
+print("Server starting on port", PORT)
+print("Open: http://localhost:" + str(PORT))
 
 handler = http.server.SimpleHTTPRequestHandler
 httpd = socketserver.TCPServer(("", PORT), handler)
