@@ -1,12 +1,17 @@
 import http.server
 import socketserver
-import os
 
-PORT = 8080
+PORT = 8081
 
-print("Server starting on port", PORT)
-print("Open: http://localhost:" + str(PORT))
+print("Chemistry Lab Pro Server")
+print("========================")
+print(f"Server running on port {PORT}")
+print(f"Open: http://localhost:{PORT}")
+print("Press Ctrl+C to stop")
 
 handler = http.server.SimpleHTTPRequestHandler
-httpd = socketserver.TCPServer(("", PORT), handler)
-httpd.serve_forever()
+with socketserver.TCPServer(("", PORT), handler) as httpd:
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        print("Server stopped")
